@@ -12,7 +12,7 @@ public class Csection {
     private String name;
 
     @Column(nullable = false)
-    private String hieght;
+    private String height;
 
     @Column(nullable = false)
     private String weight;
@@ -21,17 +21,17 @@ public class Csection {
     private String jm;
 
     @Column(nullable = false)
-    private String price;
+    private Double price;
 
     @Column(nullable = false)
-    private String quantity;
+    private int quantity;
 
     public Csection() {
     }
 
-    public Csection(String name, String hieght, String weight, String jm, String price, String quantity) {
+    public Csection(String name, String height, String weight, String jm, Double price, int quantity) {
         this.name = name;
-        this.hieght = hieght;
+        this.height = height;
         this.weight = weight;
         this.jm = jm;
         this.price = price;
@@ -50,12 +50,12 @@ public class Csection {
         this.name = name;
     }
 
-    public String getHieght() {
-        return hieght;
+    public String getHeight() {
+        return height;
     }
 
-    public void setHieght(String hieght) {
-        this.hieght = hieght;
+    public void setHeight(String height) {
+        this.height = height;
     }
 
     public String getWeight() {
@@ -74,19 +74,19 @@ public class Csection {
         this.jm = jm;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -95,7 +95,7 @@ public class Csection {
         return "C-section{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", hieght='" + hieght + '\'' +
+                ", height='" + height + '\'' +
                 ", weight='" + weight + '\'' +
                 ", jm='" + jm + '\'' +
                 ", price='" + price + '\'' +
