@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CsectionRepository extends JpaRepository<Csection, Long> {
+    Csection findByName(String name);
 }

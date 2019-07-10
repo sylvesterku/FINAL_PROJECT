@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Super app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div th:insert="fragments :: mainNavbar"></div>
+
+<br>
+<br>
+
+<div>
+    <div>
+        <div>
+            <h1>Dodaj nowy profil do bazy</h1>
+            <form action="#" th:action="@{/addNewCsectionAction}" th:object="${newCsection}" method="post">
+
+                <div class="form-control">
+
+                    <label for="profileName">Profil</label>
+                    <input id="profileName" type="text" th:field="${newCsection.name}"/>
+
+                    <label for="profileHeight">Wysokość</label>
+                    <input id="profileHeight" type="text" th:field="${newCsection.height}"/>
+
+                    <label for="profileWeight">Waga(kg/mb)</label>
+                    <input id="profileWeight" type="text" th:field="${newCsection.weight}"/>
+
+                    <label for="profilePrice">Cena</label>
+                    <input id="profilePrice" type="number" step="any" th:field="${newCsection.price}"/>
+
+                    <label for="profileQuantity">Ilość</label>
+                    <input id="profileQuantity" type="number" th:field="${newCsection.quantity}"/>
+
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Dodaj" class="btn-primary"/>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:insert="fragments :: mainFooter"></div>
+
+</body>
+</html>

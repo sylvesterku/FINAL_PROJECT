@@ -1,35 +1,19 @@
-package com.sda.steelprofiles.finalApp.entities;
+package com.sda.steelprofiles.finalApp.dtos;
 
-import javax.persistence.*;
-
-@Entity
-public class Csection {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CsectionDTO {
     private Long id;
-
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
     private String height;
-
-    @Column(nullable = false)
     private String weight;
-
-    @Column(nullable = false)
     private final String jm = "mb";
-
-    @Column(nullable = false)
     private Double price;
-
-    @Column(nullable = false)
     private Integer quantity;
 
-    public Csection() {
+    public CsectionDTO() {
     }
 
-    public Csection(String name, String height, String weight, Double price, Integer quantity) {
+    public CsectionDTO(Long id, String name, String height, String weight, Double price, Integer quantity) {
+        this.id = id;
         this.name = name;
         this.height = height;
         this.weight = weight;
@@ -83,18 +67,5 @@ public class Csection {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }
-
-    @Override
-    public String toString() {
-        return "C-section{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", height='" + height + '\'' +
-                ", weight='" + weight + '\'' +
-                ", jm='" + jm + '\'' +
-                ", price='" + price + '\'' +
-                ", quantity='" + quantity + '\'' +
-                '}';
     }
 }
