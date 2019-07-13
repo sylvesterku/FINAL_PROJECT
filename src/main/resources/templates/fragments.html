@@ -1,22 +1,36 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<nav class="navbar navbar-default" th:fragment="mainNavbar">
+<nav class="navbar navbar-inverse navbar-expand navbar-fixed-top"  style="border: 5px solid black; padding: 5px" th:fragment="mainNavbar">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Profile stalowe</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="/index.html">O firmie</a></li>
+            <li><a href="/index">O firmie</a></li>
             <li><a href="/addCsection">Oferta i dostępność produktów</a></li>
             <li><a href="/allCoursesPage">Zamówienia</a></li>
             <li><a href="/allCoursesPage">Kontakt</a></li>
         </ul>
     </div>
+    <div align="left">
+        <img src="img\stal3.jpg" width="100" height="75"/>
+        <img src="img\stal2.jpg" width="90" height="75"/>
+        <img src="img\stal1.jpg" width="80" height="75"/>
+        <img src="img\stal4.jpg" width="90" height="75"/>
+        <img src="img\stal5.jpg" width="100" height="75"/>
+        <img src="img\stal6.jpg" width="100" height="75"/>
+        <img src="img\stal7.jpg" width="90" height="75"/>
+        <img src="img\stal8.jpg" width="90" height="75"/>
+    </div>
 </nav>
 
-<footer class="card-footer text-center" th:fragment="mainFooter">
-    <div>
-        <a href="https://www.facebook.com/sylwester.kukla">Facebook</a>
-        <a href="https://www.google.pl/">Google</a>
-        <span>Copyrights by SK</span>
+<!-- Footer -->
+<footer class="page-footer font-small mdb-color darken-3 pt-4"  th:fragment="mainFooter">
+<br><br>
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <a href="https://www.facebook.com/sylwester.kukla"> Sylwester Kukla</a>
     </div>
+    <!-- Copyright -->
+
 </footer>
+<!-- Footer -->

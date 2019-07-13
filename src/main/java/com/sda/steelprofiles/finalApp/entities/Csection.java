@@ -1,6 +1,7 @@
 package com.sda.steelprofiles.finalApp.entities;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Csection {
@@ -25,6 +26,9 @@ public class Csection {
 
     @Column(nullable = false)
     private Integer quantity;
+
+    @OneToOne(mappedBy = "csection")
+    private OrderProduct orderProduct;
 
     public Csection() {
     }
@@ -83,6 +87,27 @@ public class Csection {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public OrderProduct getOrderProduct() {
+        return orderProduct;
+    }
+
+    public void setOrderProduct(OrderProduct orderProduct) {
+        this.orderProduct = orderProduct;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Csection csection = (Csection) o;
+        return name.equals(csection.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 
     @Override

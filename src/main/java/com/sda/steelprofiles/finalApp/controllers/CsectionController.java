@@ -1,7 +1,12 @@
 package com.sda.steelprofiles.finalApp.controllers;
 
 import com.sda.steelprofiles.finalApp.dtos.CsectionDTO;
+import com.sda.steelprofiles.finalApp.dtos.OrderDTO;
+import com.sda.steelprofiles.finalApp.dtos.OrderProductDTO;
+import com.sda.steelprofiles.finalApp.entities.OrderProduct;
 import com.sda.steelprofiles.finalApp.services.servicesImpl.CsectionServiceImpl;
+import com.sda.steelprofiles.finalApp.services.servicesImpl.OrderProductServiceImpl;
+import com.sda.steelprofiles.finalApp.services.servicesImpl.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,24 +18,46 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class CsectionController {
 
     private CsectionServiceImpl csection;
+    private OrderServiceImpl order;
+    private OrderProductServiceImpl orderProductService;
 
     @Autowired
-    public CsectionController(CsectionServiceImpl csection) {
+    public CsectionController(CsectionServiceImpl csection, OrderServiceImpl order, OrderProductServiceImpl orderProductService) {
         this.csection = csection;
+        this.order = order;
+        this.orderProductService = orderProductService;
     }
 
     @GetMapping("/addCsection")
     public String showaddingForm(Model model) {
+        model.addAttribute("allProfiles", csection.findAll());
         model.addAttribute("newCsection", new CsectionDTO());
         model.addAttribute("queryString", new QueryString());
+        model.addAttribute("newOrderCreate", new OrderDTO());
+        model.addAttribute("newProduct", new OrderProductDTO());
         return "addCsection";
     }
 
 
     @PostMapping("/addNewCsectionAction")
     public String addNewCsection(@ModelAttribute("newCsection") CsectionDTO csectionDTO) {
-        csection.seve(csectionDTO);
+        if (csection.findByName(csectionDTO.getName()) == null) {
+            csection.save(csectionDTO);
+        } else {
+            csection.update(csectionDTO);
+        }
+        return "redirect:addCsection";
+    }
 
+    @GetMapping("/createNewOrderAction")
+    public String create(@ModelAttribute("newOrderCreate") OrderDTO orderDTO) {
+        order.create(orderDTO);
+        return "redirect:addCsection";
+    }
+
+    @PostMapping("/addProductToOrder")
+    public String addProductsToOrder(@ModelAttribute("newProduct") OrderProduct orderProduct) {
+        orderProductService.create(orderProduct);
         return "redirect:addCsection";
     }
     public static class QueryString{

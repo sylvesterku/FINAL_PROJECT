@@ -1,5 +1,7 @@
 package com.sda.steelprofiles.finalApp.dtos;
 
+import java.util.Objects;
+
 public class CsectionDTO {
     private Long id;
     private String name;
@@ -67,5 +69,18 @@ public class CsectionDTO {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CsectionDTO that = (CsectionDTO) o;
+        return name.equals(that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

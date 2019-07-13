@@ -2,9 +2,10 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Super app</title>
+    <title>Profile stalowe</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mainStyles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -14,21 +15,106 @@
 <div th:insert="fragments :: mainNavbar"></div>
 
 <br>
-<br>
+
+<div>
+    <h3>Profile UPN</h3>
+    <img src="img\Csection.png" width="200" height="200">
+</div>
 
 <div>
     <div>
         <div>
-            <h1>Dodaj nowy profil do bazy</h1>
+            <form action="#" th:action="@{/createNewOrderAction}" th:object="${newOrderCreate}" style="color: black">
+                <input type="submit" value="Stwórz nowe zamówienie" class="btn-outline-primary">
+            </form>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Profil</th>
+                    <th>Wysokość</th>
+                    <th>Waga(kg/mb)</th>
+                    <th>Cena za jednostkę</th>
+                    <th>Dostępna ilość</th>
+                    <th>Dodaj do zamówienia</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="order: ${allProfiles}">
+                    <td><span th:text="${order.name}"></span></td>
+                    <td><span th:text="${order.height}"></span></td>
+                    <td><span th:text="${order.weight}"></span></td>
+                    <td><span th:text="${order.price}"></span></td>
+                    <td><span th:text="${order.quantity}"></span></td>
+                    <td>
+                        <div>
+                            <form action="#" th:action="@{/addProductToOrder}" th:object="${newProduct}" method="post">
+                                <label for="productQuantity">Ilość</label>
+                                <input style="color: black" id="productQuantity" type="number"
+                                       th:field="${newProduct.quantity}"/>
+                                <input type="submit" value="Dodaj do zamówienia" class="btn-primary"/>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4>Dodaj nowy profil do bazy</h4>
             <form action="#" th:action="@{/addNewCsectionAction}" th:object="${newCsection}" method="post">
 
-                <div class="form-control">
+                <div class="form-control" id="form">
 
-                    <label for="profileName">Profil</label>
-                    <input id="profileName" type="text" th:field="${newCsection.name}"/>
+                    <select th:field="${newCsection.name}">
+                        <option th:value="'default'" th:text="select"></option>
+                        <option th:value="'UPN50'" th:text="UPN50"></option>
+                        <option th:value="'UPN65'" th:text="UPN65"></option>
+                        <option th:value="'UPN80'" th:text="UPN80"></option>
+                        <option th:value="'UPN100'" th:text="UPN100"></option>
+                        <option th:value="'UPN120'" th:text="UPN120"></option>
+                        <option th:value="'UPN140'" th:text="UPN140"></option>
+                        <option th:value="'UPN160'" th:text="UPN160"></option>
+                        <option th:value="'UPN180'" th:text="UPN180"></option>
+                        <option th:value="'UPN200'" th:text="UPN200"></option>
+                        <option th:value="'UPN220'" th:text="UPN220"></option>
+                        <option th:value="'UPN240'" th:text="UPN240"></option>
+                        <option th:value="'UPN260'" th:text="UPN260"></option>
+                        <option th:value="'UPN280'" th:text="UPN280"></option>
+                        <option th:value="'UPN300'" th:text="UPN300"></option>
+                        <option th:value="'UPN320'" th:text="UPN320"></option>
+                        <option th:value="'UPN350'" th:text="UPN350"></option>
+                        <option th:value="'UPN380'" th:text="UPN380"></option>
+                        <option th:value="'UPN400'" th:text="UPN400"></option>
+                    </select>
 
-                    <label for="profileHeight">Wysokość</label>
-                    <input id="profileHeight" type="text" th:field="${newCsection.height}"/>
+                    <!--  <label for="profileName">Profil</label>
+                      <input id="profileName" type="text" th:field="${newCsection.name}"/> -->
+
+                    <select th:field="${newCsection.height}">
+                        <option th:value="'default'" th:text="select"></option>
+                        <option th:value="'50'" th:text="50"></option>
+                        <option th:value="'65'" th:text="65"></option>
+                        <option th:value="'80'" th:text="80"></option>
+                        <option th:value="'100'" th:text="100"></option>
+                        <option th:value="'120'" th:text="120"></option>
+                        <option th:value="'140'" th:text="140"></option>
+                        <option th:value="'160'" th:text="160"></option>
+                        <option th:value="'180'" th:text="180"></option>
+                        <option th:value="'200'" th:text="200"></option>
+                        <option th:value="'220'" th:text="220"></option>
+                        <option th:value="'240'" th:text="240"></option>
+                        <option th:value="'260'" th:text="260"></option>
+                        <option th:value="'280'" th:text="280"></option>
+                        <option th:value="'300'" th:text="300"></option>
+                        <option th:value="'320'" th:text="320"></option>
+                        <option th:value="'350'" th:text="350"></option>
+                        <option th:value="'380'" th:text="380"></option>
+                        <option th:value="'400'" th:text="400"></option>
+                    </select>
+
+                    <!--  <label for="profileHeight">Wysokość</label>
+                      <input id="profileHeight" type="text" th:field="${newCsection.height}"/> -->
 
                     <label for="profileWeight">Waga(kg/mb)</label>
                     <input id="profileWeight" type="text" th:field="${newCsection.weight}"/>
@@ -39,9 +125,7 @@
                     <label for="profileQuantity">Ilość</label>
                     <input id="profileQuantity" type="number" th:field="${newCsection.quantity}"/>
 
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Dodaj" class="btn-primary"/>
+                    <input type="submit" value="Dodaj/Aktualizuj" class="btn-primary"/>
                 </div>
 
             </form>

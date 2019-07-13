@@ -6,5 +6,6 @@ import com.sda.steelprofiles.finalApp.entities.Csection;
 public interface CsectionService {
     Csection findByName(String name);
 
-    Csection seve(CsectionDTO newProfile);
+    Csection save(CsectionDTO newProfile);
+    Csection update(CsectionDTO newProfile);
 }
