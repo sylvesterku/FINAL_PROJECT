@@ -57,7 +57,7 @@ public class CsectionServiceImpl implements CsectionService {
         return csectionRepository
                 .findAll()
                 .stream()
-                .map(csectionDTO -> modelMapper.map(csectionDTO, CsectionDTO.class))
+                .map(csection -> modelMapper.map(csection, CsectionDTO.class))
                 .sorted(Comparator.comparing(CsectionDTO::getPrice))
                 .collect(Collectors.toList());
     }

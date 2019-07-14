@@ -30,6 +30,7 @@
             <table class="table">
                 <thead>
                 <tr>
+                    <th>id</th>
                     <th>Profil</th>
                     <th>Wysokość</th>
                     <th>Waga(kg/mb)</th>
@@ -41,6 +42,7 @@
                 <tbody>
 
                 <tr th:each="order: ${allProfiles}">
+                    <td><span th:text="${order.id}"></span></td>
                     <td><span th:text="${order.name}"></span></td>
                     <td><span th:text="${order.height}"></span></td>
                     <td><span th:text="${order.weight}"></span></td>
@@ -48,10 +50,11 @@
                     <td><span th:text="${order.quantity}"></span></td>
                     <td>
                         <div>
-                            <form action="#" th:action="@{/addProductToOrder}" th:object="${newProduct}" method="post">
+                            <form action="#" th:action="@{/addProductToOrder}" th:object="${newOrderPosition}" method="post">
                                 <label for="productQuantity">Ilość</label>
                                 <input style="color: black" id="productQuantity" type="number"
-                                       th:field="${newProduct.quantity}"/>
+                                       th:field="${newOrderPosition.quantity}"/>
+                                <input type="hidden" id="productId" name="productId" th:value="${order.id}">
                                 <input type="submit" value="Dodaj do zamówienia" class="btn-primary"/>
                             </form>
                         </div>
