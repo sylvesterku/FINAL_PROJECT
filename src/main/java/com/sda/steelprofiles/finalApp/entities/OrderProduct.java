@@ -10,12 +10,12 @@ public class OrderProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
+    @ManyToOne
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order;
 
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "csection_id")
+    @ManyToOne
+    @JoinColumn(name = "csection_id", referencedColumnName = "id")
     private Csection csection;
 
     @Column(nullable = false)

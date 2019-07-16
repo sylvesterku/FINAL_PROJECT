@@ -1,18 +1,39 @@
 package com.sda.steelprofiles.finalApp.dtos;
 
-import com.sda.steelprofiles.finalApp.entities.Csection;
-
 public class OrderProductDTO {
 
-    private Csection csection;
+    private Long id;
+    private Long csectionId;
+    private Long orderId;
     private Integer quantity;
 
-    public Csection getCsection() {
-        return csection;
+    public OrderProductDTO() {
     }
 
-    public void setCsection(Csection csection) {
-        this.csection = csection;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+    public Long getCsectionId() {
+        return csectionId;
+    }
+
+    public void setCsectionId(Long csectionId) {
+        this.csectionId = csectionId;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
     public Integer getQuantity() {

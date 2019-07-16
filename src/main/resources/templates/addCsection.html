@@ -41,20 +41,22 @@
                 </thead>
                 <tbody>
 
-                <tr th:each="order: ${allProfiles}">
-                    <td><span th:text="${order.id}"></span></td>
-                    <td><span th:text="${order.name}"></span></td>
-                    <td><span th:text="${order.height}"></span></td>
-                    <td><span th:text="${order.weight}"></span></td>
-                    <td><span th:text="${order.price}"></span></td>
-                    <td><span th:text="${order.quantity}"></span></td>
+                <tr th:each="csection: ${allProfiles}">
+                    <td><span th:text="${csection.id}"></span></td>
+                    <td><span th:text="${csection.name}"></span></td>
+                    <td><span th:text="${csection.height}"></span></td>
+                    <td><span th:text="${csection.weight}"></span></td>
+                    <td><span th:text="${csection.price}"></span></td>
+                    <td><span th:text="${csection.quantity}"></span></td>
                     <td>
                         <div>
-                            <form action="#" th:action="@{/addProductToOrder}" th:object="${newOrderPosition}" method="post">
+                            <form action="#" th:action="@{/addProductToOrder}" th:object="${newProduct}" method="post">
                                 <label for="productQuantity">Ilość</label>
                                 <input style="color: black" id="productQuantity" type="number"
-                                       th:field="${newOrderPosition.quantity}"/>
-                                <input type="hidden" id="productId" name="productId" th:value="${order.id}">
+                                       th:field="${newProduct.quantity}"/>
+                                <input type="hidden" th:value="${csection.id}" th:attr="name='csectionId'" />
+                                <input type="hidden" value=2 th:attr="name='orderId'" />
+
                                 <input type="submit" value="Dodaj do zamówienia" class="btn-primary"/>
                             </form>
                         </div>

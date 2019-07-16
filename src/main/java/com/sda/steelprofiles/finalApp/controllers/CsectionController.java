@@ -31,6 +31,7 @@ public class CsectionController {
     @GetMapping("/addCsection")
     public String showaddingForm(Model model) {
         model.addAttribute("allProfiles", csection.findAll());
+        model.addAttribute("allOrders", order.findAll());
         model.addAttribute("newCsection", new CsectionDTO());
         model.addAttribute("newOrderPosition", new CSectionFormDTO());
         model.addAttribute("queryString", new QueryString());
@@ -57,10 +58,8 @@ public class CsectionController {
     }
 
     @PostMapping("/addProductToOrder")
-    public String addProductsToOrder(@ModelAttribute("newProduct") CSectionFormDTO orderProduct) {
-
-
-        //orderProductService.create(orderProduct);
+    public String addProductsToOrder(@ModelAttribute("newProduct") OrderProductDTO orderProductDTO) {
+        orderProductService.create(orderProductDTO);
         return "redirect:addCsection";
     }
     public static class QueryString{

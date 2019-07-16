@@ -1,6 +1,7 @@
 package com.sda.steelprofiles.finalApp.entities;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -27,18 +28,19 @@ public class Csection {
     @Column(nullable = false)
     private Integer quantity;
 
-    @OneToOne(mappedBy = "csection")
-    private OrderProduct orderProduct;
+    @OneToMany(mappedBy = "csection", cascade = CascadeType.ALL)
+    private List<OrderProduct> orderProducts;
 
     public Csection() {
     }
 
-    public Csection(String name, String height, String weight, Double price, Integer quantity) {
+    public Csection(String name, String height, String weight, Double price, Integer quantity, List<OrderProduct> orderProducts) {
         this.name = name;
         this.height = height;
         this.weight = weight;
         this.price = price;
         this.quantity = quantity;
+        this.orderProducts = orderProducts;
     }
 
     public Long getId() {
@@ -89,12 +91,12 @@ public class Csection {
         this.quantity = quantity;
     }
 
-    public OrderProduct getOrderProduct() {
-        return orderProduct;
+    public List<OrderProduct> getOrderProducts() {
+        return orderProducts;
     }
 
-    public void setOrderProduct(OrderProduct orderProduct) {
-        this.orderProduct = orderProduct;
+    public void setOrderProducts(List<OrderProduct> orderProducts) {
+        this.orderProducts = orderProducts;
     }
 
     @Override
